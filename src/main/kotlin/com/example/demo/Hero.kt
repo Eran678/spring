@@ -5,8 +5,8 @@ import kotlin.time.measureTime
 
 data class Hero(
     val id: Int = 0,
-    var name: String? = null,
-    val abilities: MutableList<String>? = null,
+    var name: String = "",
+    val abilities: MutableList<String> = mutableListOf(),
     var image: Blob? = null,
     var isImageDrawn: Boolean = false
 ) {
