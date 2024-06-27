@@ -1,15 +1,45 @@
 package com.example.demo
 
-import java.sql.Blob
-import kotlin.time.measureTime
-
 data class Hero(
-    val id: Int = 0,
-    var name: String = "",
-    val abilities: MutableList<String> = mutableListOf(),
-    var image: Blob? = null,
-    var isImageDrawn: Boolean = false
+    private val id: Int = 0,
+    private var name: String = "",
+    private val abilities: MutableList<String> = mutableListOf(),
+    private var image: ByteArray? = null,
+    private var isImageDrawn: Boolean = false
 ) {
+
+    fun getId(): Int {
+        return id
+    }
+
+    fun setName(name: String) {
+        this.name = name
+    }
+    fun getName(): String {
+        return name
+    }
+
+    fun setAbilities(abilities: List<String>) {
+        this.abilities.clear()
+        this.abilities.addAll(abilities)
+    }
+    fun getAbilities(): List<String> {
+        return abilities
+    }
+
+    fun setImage(image:ByteArray) {
+        this.image = image
+    }
+    fun getImage(): ByteArray? {
+        return image
+    }
+
+    fun setIsImageDrawn(isImageDrawn:Boolean) {
+        this.isImageDrawn = isImageDrawn
+    }
+    fun getIsImageDrawn(): Boolean {
+        return isImageDrawn
+    }
 
 
 
