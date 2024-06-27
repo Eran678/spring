@@ -12,7 +12,7 @@ class AppConfig {
     fun corsConfigurer(): WebMvcConfigurer {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
-                registry.addMapping("/**").allowedOrigins("*")
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST")
             }
         }
     }
@@ -32,5 +32,10 @@ class AppConfig {
         heroesList.add(Hero(20, "Tornadude", mutableListOf("Can run decently fast")))
 
         return heroesList
+    }
+
+    @Bean(name = ["ranks"])
+    fun ranks(): List<Int> {
+        return heroes().map{it.getId()}
     }
 }

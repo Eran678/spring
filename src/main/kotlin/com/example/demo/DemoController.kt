@@ -69,4 +69,18 @@ public class DemoController (private val heroService: HeroService) {
         val imageBytes = Base64.getDecoder().decode(request.image)
         heroService.updateImage(request.heroId, imageBytes, request.isImageDrawn)
     }
+
+    //ranks
+    @GetMapping("/ranks")
+    fun getRanks(): List<Int> {
+        return heroService.getRanks()
+    }
+
+    data class UpdateRanksRequest(
+        val ranks: List<Int>
+    )
+    @PostMapping("/updateRanks")
+    fun updateRanks(@RequestBody request:UpdateRanksRequest) {
+        heroService.updateRanks(request.ranks)
+    }
 }

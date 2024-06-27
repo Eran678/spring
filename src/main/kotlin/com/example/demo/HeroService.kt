@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 
 @Service("heroService")
-class HeroService (private val heroes: MutableList<Hero>) {
+class HeroService (private val heroes: MutableList<Hero>, private val ranks: MutableList<Int>) {
 
     @PostConstruct
     fun init() {
@@ -69,5 +69,16 @@ class HeroService (private val heroes: MutableList<Hero>) {
         val hero = getHero(heroId) ?: return
         hero.setImage(image)
         hero.setIsImageDrawn(isImageDrawn)
+    }
+
+    //ranks
+    fun getRanks(): MutableList<Int> {
+        return ranks
+    }
+
+    fun updateRanks(ranks: List<Int>) {
+        val rankList: MutableList<Int> = getRanks()
+        rankList.clear()
+        rankList.addAll(ranks)
     }
 }
